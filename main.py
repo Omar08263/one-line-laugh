@@ -13,6 +13,11 @@ JOKE = (
     "logged my three trips to the fridge as interval training."
 )
 
+# The gate allows 1 to 200 characters: refuse to write a line that
+# would be invalid, rather than submitting a joke the judge never sees.
+if not 1 <= len(JOKE) <= 200:
+    raise SystemExit(f"joke is {len(JOKE)} characters, outside the 1-200 gate")
+
 
 def main() -> None:
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
